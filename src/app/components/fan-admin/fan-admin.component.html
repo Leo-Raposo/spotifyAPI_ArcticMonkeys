@@ -1,0 +1,9 @@
+<div>
+  <h2>Register New Album</h2>
+  <form (submit)="addAlbum()">
+    <input type="text" [(ngModel)]="newAlbum.name" placeholder="Album Name" />
+    <input type="date" [(ngModel)]="newAlbum.release_date" />
+    <input type="text" [(ngModel)]="newAlbum.image" placeholder="URL Image" />
+    <button type="submit">Submit</button>
+  </form>
+</div>

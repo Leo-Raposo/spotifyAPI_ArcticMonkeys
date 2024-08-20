@@ -1,0 +1,48 @@
+body,
+html {
+    font-family: 'Inter', sans-serif;
+
+}
+
+:host {
+    display: block;
+    width: 100%;
+    background-color: #2E2F2A;
+    padding: 15px 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.app-bar-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo img {
+    height: 50px;
+    width: auto;
+    display: block;
+    object-fit: contain;
+}
+
+.navigation {
+    display: flex;
+    gap: 20px;
+}
+
+.navigation a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.navigation a:hover {
+    color: #f8b339;
+}

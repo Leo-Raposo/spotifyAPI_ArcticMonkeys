@@ -1,0 +1,87 @@
+<app-bar></app-bar>
+
+<div class="header-image">
+    <img src="https://i.ibb.co/BnWNR8Q/Fundo.png" alt="Arctic Monkeys Background">
+</div>
+
+<section class="biography-container">
+    <div class="biography-text">
+        <h2>Biography</h2>
+        <p>
+            Arctic Monkeys are a British rock band formed in 2002 in Sheffield. The band is made up of Alex Turner
+            (vocalist and guitarist), Matt Helders (drummer), Jamie Cook (guitarist) and Nick O'Malley (bassist). They
+            are widely recognized as one of the greatest British bands of the 21st century.
+        </p>
+        <p>
+            The band is also known for their popular singles such as "I Bet You Look Good on the Dancefloor",
+            "Fluorescent Adolescent", and "Do I Wanna Know?". Arctic Monkeys continue to be an influential force on the
+            global music scene.
+        </p>
+    </div>
+</section>
+
+<div id="discography" class="discography-section">
+    <div class="content-container">
+        <div class="container">
+            <section class="album-list">
+                <div class="header">
+                    <h2>Discography</h2>
+                    <input type="text" placeholder="Search Album..." (input)="filterAlbums($event)" class="search-bar">
+                </div>
+                <ul>
+                    <li *ngFor="let album of filteredAlbums" (click)="showTracks(album)"
+                        [class.selected]="album === selectedAlbum">
+                        <div class="album-info">
+                            <p>{{ album.name }}</p>
+                            <small>{{ album.release_date | date: 'yyyy' }}</small>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+
+            <section class="track-list">
+                <div class="header">
+                    <h1></h1>
+                    <h2>{{ selectedAlbum?.name }} - {{ selectedAlbum?.release_date | date: 'yyyy' }}</h2>
+                </div>
+                <ol>
+                    <li *ngFor="let track of selectedAlbumTracks" (click)="playTrack(track)"
+                        [class.playing]="track === selectedTrack">
+                        {{ track.name }} - {{ track.duration_ms | duration }}
+                        <div class="controls" *ngIf="track === selectedTrack">
+                            <img src="https://svgur.com/i/19Tu.svg" alt="Play" (click)="playTrack(track, $event)"
+                                class="control-icon">
+                            <img src="https://svgur.com/i/19UZ.svg" alt="Pause" (click)="pauseTrack($event)"
+                                class="control-icon">
+                            <img src="https://svgur.com/i/19T8.svg" alt="Stop" (click)="stopTrack($event)"
+                                class="control-icon">
+                            <input type="range" min="0" max="1" step="0.01" (input)="adjustVolume($event)">
+                        </div>
+                    </li>
+                </ol>
+            </section>
+        </div>
+    </div>
+
+    <div id="events" class="events-section">
+        <section class="events">
+            <h2>Next Events</h2>
+            <ul>
+                <li><strong>São Paulo, Brasil</strong> - Estádio do Morumbi - 01 Dez 2024</li>
+                <li><strong>Buenos Aires, Argentina</strong> - Estádio Monumental - 05 Dez 2024</li>
+                <li><strong>Santiago, Chile</strong> - Estádio Nacional - 10 Dez 2024</li>
+                <li><strong>Rio de Janeiro, Brasil</strong> - Maracanã - 15 Dez 2024</li>
+            </ul>
+        </section>
+    </div>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <p>&copy; 2024 Leonardo Raposo. All rights reserved.</p>
+            <div class="social-links">
+                <a href="link_para_facebook" target="_blank">Facebook</a>
+                <a href="link_para_twitter" target="_blank">Twitter</a>
+                <a href="link_para_instagram" target="_blank">Instagram</a>
+            </div>
+        </div>
+    </footer>
